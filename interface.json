@@ -8,7 +8,7 @@
   "welcome": "README.md",
   "license": "./LICENSE",
   "contact": "邮箱 :disjoint7@163.com    qq群:645818258",
-  "github": "https://github.com/TanyaShue/MaaYYs",
+  "github": "https://github.com/b1n4he/MaaYYs-win32",
   "mirrorchyan_rid": "MaaYYs",
   "mirrorchyan_multiplatform": true,
   "telemetry": {
@@ -25,6 +25,20 @@
       "label": "安卓设备",
       "type": "Adb",
       "description": "通过ADB连接的安卓设备"
+    },
+    {
+      "name": "Win32",
+      "label": "桌面版（Windows）",
+      "type": "Win32",
+      "description": "通过 Win32 窗口控制阴阳师桌面版（MuMu 引擎，无需模拟器/ADB）",
+      "display_short_side": 720,
+      "win32": {
+        "class_regex": "Win32Window",
+        "window_regex": "阴阳师-MuMu模拟器专版",
+        "mouse": "SendMessage",
+        "keyboard": "SendMessage",
+        "screencap": "PrintWindow"
+      }
     },
     {
       "name": "PlayCover",
