@@ -151,27 +151,6 @@ jobs:
             maafw_platform: win-aarch64
             executable: mxu.exe
             agent: agent.exe
-          - os: macos
-            arch: x86_64
-            runner: macos-15-intel
-            mxu_platform: macos-x86_64
-            maafw_platform: macos-x86_64
-            executable: mxu
-            agent: agent
-          - os: macos
-            arch: aarch64
-            runner: macos-latest
-            mxu_platform: macos-aarch64
-            maafw_platform: macos-aarch64
-            executable: mxu
-            agent: agent
-          - os: linux
-            arch: x86_64
-            runner: ubuntu-latest
-            mxu_platform: linux-x86_64
-            maafw_platform: linux-x86_64
-            executable: mxu
-            agent: agent
 
     steps:
       - name: Checkout repository
@@ -269,22 +248,10 @@ jobs:
             fi
           done
 
-          if [ "${{ matrix.os }}" != "win" ]; then
-            python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          path = Path("package/interface.json")
-          data = json.loads(path.read_text(encoding="utf-8"))
-          data["agent"]["child_exec"] = "./agent/agent"
-          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          PY
-          fi
-
       - name: Upload package artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MaaYYs-${{ matrix.os }}-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
+          name: MaaYYs-win32-${{ matrix.os }}-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
           path: package
           retention-days: 7
 
@@ -345,11 +312,3 @@ jobs:
           body: ${{ needs.changelog.outputs.release_body }}
           draft: false
           prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
-
-      - name: Trigger MirrorChyanUploading
-        shell: bash
-        run: |
-          gh workflow run --repo "$GITHUB_REPOSITORY" mirrorchyan.yml -f tag=${{ needs.meta.outputs.tag }}
-          gh workflow run --repo "$GITHUB_REPOSITORY" mirrorchyan_release_note.yml -f tag=${{ needs.meta.outputs.tag }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
