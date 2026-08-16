@@ -83,55 +83,9 @@ jobs:
           echo "is_release=$is_release" | tee -a "$GITHUB_OUTPUT"
           echo "is_prerelease=$is_prerelease" | tee -a "$GITHUB_OUTPUT"
 
-  update-version:
-    name: Update version
-    needs: meta
-    if: ${{ needs.meta.outputs.is_release == 'true' }}
-    runs-on: ubuntu-latest
-    outputs:
-      commit_sha: ${{ steps.commit_push.outputs.commit_sha }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.ref }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Update version in interface.json
-        run: |
-          python3 << 'PY'
-          import json
-          import os
-          from pathlib import Path
-
-          path = Path("interface.json")
-          data = json.loads(path.read_text(encoding="utf-8"))
-          data["version"] = os.environ["RELEASE_TAG"]
-          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(f"Updated version to: {os.environ['RELEASE_TAG']}")
-          PY
-        env:
-          RELEASE_TAG: ${{ needs.meta.outputs.tag }}
-
-      - name: Commit and push changes
-        id: commit_push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add interface.json
-          git commit -m "ci: Update version to ${{ needs.meta.outputs.tag }} [skip changelog]" || echo "No changes to commit"
-          git push origin HEAD:main
-          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
   build:
     name: Build ${{ matrix.os }}-${{ matrix.arch }}
-    needs: [meta, update-version]
-    if: ${{ always() && !cancelled() && (needs.update-version.result == 'success' || needs.update-version.result == 'skipped') }}
+    needs: [meta]
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
@@ -156,7 +110,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ needs.update-version.outputs.commit_sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
           submodules: true
 

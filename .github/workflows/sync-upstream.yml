@@ -1,0 +1,77 @@
+name: Sync Upstream and Release
+
+on:
+  schedule:
+    # 每 6 小时检查一次上游（UTC，北京时间为 08/14/20/02 点）
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    name: Sync upstream
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/TanyaShue/MaaYYs.git
+
+      - name: Fetch upstream
+        run: |
+          git fetch upstream main
+          git fetch origin main
+
+      - name: Check for upstream updates
+        id: check
+        run: |
+          NEW=$(git rev-list --count origin/main..upstream/main)
+          echo "New upstream commits: $NEW"
+          if [ "$NEW" -gt 0 ]; then
+            echo "has_update=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No upstream updates, skip."
+            echo "has_update=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Merge upstream into main
+        if: steps.check.outputs.has_update == 'true'
+        run: |
+          git checkout main
+          if ! git merge upstream/main -m "chore: sync upstream $(git rev-parse --short upstream/main)"; then
+            echo "::warning::合并出现冲突，尝试自动保留 fork 有意改动的文件"
+            # README 与 CI 是 fork 有意改写的，冲突时保留 fork 版本
+            git checkout --ours -- README.md .github/workflows/build-release.yml 2>/dev/null || true
+            # interface.json 是关键文件，冲突则停止，交由人工处理
+            if git diff --name-only --diff-filter=U | grep -q '^interface.json$'; then
+              echo "::error::interface.json 冲突，需人工解决后重跑"
+              git merge --abort
+              exit 1
+            fi
+            git add -A
+            git commit --no-edit
+          fi
+          git push origin main
+
+      - name: Create release tag
+        if: steps.check.outputs.has_update == 'true'
+        run: |
+          VERSION=$(python3 -c "import json,re; v=json.load(open('interface.json',encoding='utf-8')).get('version',''); m=re.match(r'v?(\d+\.\d+\.\d+)', v); print(m.group(1) if m else '')")
+          if [ -z "$VERSION" ]; then
+            echo "::warning::无法从 interface.json 解析版本号，跳过 release"
+            exit 0
+          fi
+          TAG="v${VERSION}-$(date +%y%m%d%H%M)"
+          git tag "$TAG"
+          git push origin "$TAG"
+          echo "已推送 tag $TAG，将触发 build-release 自动打包发布"
