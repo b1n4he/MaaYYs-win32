@@ -63,10 +63,10 @@ jobs:
           fi
           git push origin main
 
-      - name: Create release tag
+      - name: Create release tag and trigger build
         if: steps.check.outputs.has_update == 'true'
         run: |
-          VERSION=$(python3 -c "import json,re; v=json.load(open('interface.json',encoding='utf-8')).get('version',''); m=re.match(r'v?(\d+\.\d+\.\d+)', v); print(m.group(1) if m else '')")
+          VERSION=$(python3 -c "import json,re; v=json.load(open('interface.json',encoding='utf-8')).get('version',''); m=re.match(r'v?(\d+\.\d+\.\d+(?:-[0-9A-Za-z.]+)?)', v); print(m.group(1) if m else '')")
           if [ -z "$VERSION" ]; then
             echo "::warning::无法从 interface.json 解析版本号，跳过 release"
             exit 0
@@ -74,4 +74,9 @@ jobs:
           TAG="v${VERSION}-$(date +%y%m%d%H%M)"
           git tag "$TAG"
           git push origin "$TAG"
-          echo "已推送 tag $TAG，将触发 build-release 自动打包发布"
+          echo "已推送 tag $TAG"
+          # GITHUB_TOKEN 推送的 tag 不会触发 on:push 工作流（GitHub 官方限制），
+          # 必须显式 dispatch build-release.yml，否则永远不会生成 Release。
+          gh workflow run build-release.yml --ref "$TAG"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

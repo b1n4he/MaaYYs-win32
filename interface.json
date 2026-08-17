@@ -8,8 +8,6 @@
   "welcome": "README.md",
   "license": "./LICENSE",
   "contact": "邮箱 :disjoint7@163.com    qq群:645818258",
-  "github": "https://github.com/b1n4he/MaaYYs-win32",
-  "mirrorchyan_rid": "MaaYYs",
   "mirrorchyan_multiplatform": true,
   "telemetry": {
     "sentry": {
