@@ -1,4 +1,4 @@
-name: Sync Upstream and Release
+name: Sync Upstream Activities and Release
 
 on:
   schedule:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   sync:
-    name: Sync upstream
+    name: Sync upstream activities only
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -44,29 +44,40 @@ jobs:
             echo "has_update=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Merge upstream into main
+      - name: Cherry-pick activity commits only
+        id: sync
         if: steps.check.outputs.has_update == 'true'
         run: |
           git checkout main
-          if ! git merge upstream/main -m "chore: sync upstream $(git rev-parse --short upstream/main)"; then
-            echo "::warning::合并出现冲突，尝试自动保留 fork 有意改动的文件"
-            # README 与 CI 是 fork 有意改写的，冲突时保留 fork 版本
-            git checkout --ours -- README.md .github/workflows/build-release.yml 2>/dev/null || true
-            # interface.json 是关键文件，冲突则停止，交由人工处理
-            if git diff --name-only --diff-filter=U | grep -q '^interface.json$'; then
-              echo "::error::interface.json 冲突，需人工解决后重跑"
-              git merge --abort
-              exit 1
+          NEW_COMMITS=$(git rev-list --reverse origin/main..upstream/main)
+          SYNCED=0
+          for commit in $NEW_COMMITS; do
+            MSG=$(git log -1 --format=%s "$commit")
+            FILES=$(git diff-tree --no-commit-id --name-only -r "$commit")
+            if echo "$FILES" | grep -qE "tasks/(活动|花车|限时活动)|pipeline/活动/"; then
+              echo "活动提交，cherry-pick: $commit $MSG"
+              if git cherry-pick "$commit"; then
+                SYNCED=$((SYNCED+1))
+              else
+                echo "::warning::cherry-pick 冲突，跳过: $MSG"
+                git cherry-pick --abort
+              fi
+            else
+              echo "跳过非活动提交: $commit $MSG"
             fi
-            git add -A
-            git commit --no-edit
+          done
+          if [ "$SYNCED" -gt 0 ]; then
+            git push origin main
+            echo "synced=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "无活动相关更新"
+            echo "synced=false" >> "$GITHUB_OUTPUT"
           fi
-          git push origin main
 
-      - name: Create release tag and trigger build
-        if: steps.check.outputs.has_update == 'true'
+      - name: Create release tag
+        if: steps.check.outputs.has_update == 'true' && steps.sync.outputs.synced == 'true'
         run: |
-          VERSION=$(python3 -c "import json,re; v=json.load(open('interface.json',encoding='utf-8')).get('version',''); m=re.match(r'v?(\d+\.\d+\.\d+(?:-[0-9A-Za-z.]+)?)', v); print(m.group(1) if m else '')")
+          VERSION=$(python3 -c "import json,re; v=json.load(open('interface.json',encoding='utf-8')).get('version',''); m=re.match(r'v?(\d+\.\d+\.\d+)', v); print(m.group(1) if m else '')")
           if [ -z "$VERSION" ]; then
             echo "::warning::无法从 interface.json 解析版本号，跳过 release"
             exit 0
@@ -74,9 +85,4 @@ jobs:
           TAG="v${VERSION}-$(date +%y%m%d%H%M)"
           git tag "$TAG"
           git push origin "$TAG"
-          echo "已推送 tag $TAG"
-          # GITHUB_TOKEN 推送的 tag 不会触发 on:push 工作流（GitHub 官方限制），
-          # 必须显式 dispatch build-release.yml，否则永远不会生成 Release。
-          gh workflow run build-release.yml --ref "$TAG"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "已推送 tag $TAG，将触发 build-release 自动打包发布"
