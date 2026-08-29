@@ -702,7 +702,11 @@
       "通用-解锁阵容-识别是否解锁图标",
       "[JumpBack]通用-解锁阵容-点击解锁图标"
     ],
-    "recognition": "DirectHit"
+    "on_error": [
+      "通用-阵容解锁失败"
+    ],
+    "recognition": "DirectHit",
+    "timeout": 5000
   },
   "通用-解锁阵容-点击解锁图标": {
     "action": "Click",
@@ -736,7 +740,11 @@
       "通用-锁定阵容-识别是否锁定阵容",
       "[JumpBack]通用-锁定阵容-点击解锁图标"
     ],
-    "recognition": "DirectHit"
+    "on_error": [
+      "通用-阵容锁定失败"
+    ],
+    "recognition": "DirectHit",
+    "timeout": 5000
   },
   "通用-锁定阵容-点击解锁图标": {
     "action": "Click",
@@ -749,6 +757,12 @@
     "expected": 3,
     "model": "special-icon-v0.1.1.onnx",
     "recognition": "NeuralNetworkDetect"
+  },
+  "通用-阵容解锁失败": {
+    "recognition": "DirectHit"
+  },
+  "通用-阵容锁定失败": {
+    "recognition": "DirectHit"
   },
   "通用10": {
     "expected": "珍旅居|纳物库|组队|阴阳寮",
@@ -851,9 +865,6 @@
   },
   "通用8": {
     "action": "Click",
-    "next": [
-      "通用_切换御魂_取保所处界面位于式神录界面"
-    ],
     "recognition": "TemplateMatch",
     "roi": [
       5,
@@ -945,8 +956,8 @@
   "通用_切换御魂_开始": {
     "next": [
       "通用_切换御魂_取保所处界面位于式神录界面",
-      "通用_切换御魂_识别是否位于攻略界面",
-      "通用7"
+      "[JumpBack]通用_切换御魂_识别是否位于攻略界面",
+      "[JumpBack]通用7"
     ],
     "on_error": [
       "跳过"
@@ -956,7 +967,8 @@
   "通用_切换御魂_识别是否位于攻略界面": {
     "expected": "首页|精灵百科",
     "next": [
-      "通用_切换御魂_退出攻略界面"
+      "通用_切换御魂_退出攻略界面",
+      "[JumpBack]通用_切换御魂_退出攻略界面-特征匹配"
     ],
     "recognition": "OCR",
     "roi": [
@@ -1013,9 +1025,6 @@
   },
   "通用_切换御魂_退出攻略界面": {
     "action": "Click",
-    "next": [
-      "通用_切换御魂_取保所处界面位于式神录界面"
-    ],
     "post_delay": 3000,
     "recognition": "TemplateMatch",
     "roi": [
@@ -1025,7 +1034,23 @@
       376
     ],
     "template": [
-      "通用/通用2.png"
+      "通用/通用2.png",
+      "通用/通用/通用_切换御魂_退出攻略界面_1.png"
+    ]
+  },
+  "通用_切换御魂_退出攻略界面-特征匹配": {
+    "action": "Click",
+    "post_delay": 3000,
+    "recognition": "TemplateMatch",
+    "roi": [
+      1102,
+      344,
+      178,
+      376
+    ],
+    "template": [
+      "通用/通用2.png",
+      "通用/通用/通用_切换御魂_退出攻略界面_1.png"
     ]
   },
   "通用_取消设置挑战次数": {
