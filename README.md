@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 MD041 -->
 <div align="center">
   <img src="assets/logo/logo.png" alt="MaaYYs Logo" width="256" height="256" />
   <h1>MaaYYs-win32</h1>
@@ -63,6 +64,24 @@ MaaYYs-win32 是 [MaaYYs](https://github.com/TanyaShue/MaaYYs) 的一个分支�
 - 官服2、官服3（TapTap 下载的选这个）
 - B 站服、华为渠道服、应用宝渠道服、OPPO 渠道服、VIVO 渠道服
 
+## 使用前设置/注意事项
+
+1、模拟器分辨率设置刚需16:9分辨率，推荐分辨率为1280×720
+2、模拟器是否在启动脚本前就是横屏(若一开始是竖屏后续启动脚本后启动游戏变为横屏可能会导致脚本截图出错，尽量直接将模拟器设置为平板模式常态横屏)
+3、模拟器设置中关闭网络桥接
+4、游戏内需自行关闭那无处不在的纸人小助手（点击后可见关闭按钮）
+  <details>
+  <summary>如何关闭小纸人</summary>
+
+  1、在随便一个能看到智能小纸人的界面点击小纸人(长相如下)
+![放了一张智能纸人的照片](<https://image.989464244.xyz/file/AgACAgUAAyEGAATrAAHMTwADCWqmxDP9zEpXOwMhck65rwEDcC1uAAJqD2sbTHo4VXrbQDFosjWJAQADAgADbQADPQQ.jpg>)
+
+  2、点击进入小纸人设置界面后点击设置不再常驻
+![放了一张纸人设置界面的照片](<https://image.989464244.xyz/file/AgACAgUAAyEGAATrAAHMTwADC2qmx80WyB817_LfoleIQA1al0aTAAJ6D2sbTHo4VTE98754XdDlAQADAgADeQADPQQ.jpg>)
+  </details>
+
+5、部分任务需要填写队伍预设、挑战次数、目标副本或开关选项，建议尽量避免在队伍预设名称中使用复杂符号和空格，降低 OCR 识别失败概率
+
 ## 主要任务
 
 - 启停与通用：打开游戏、关闭游戏、日常奖励领取、网易大神签到、自动购物、式神图鉴分享。
@@ -82,12 +101,70 @@ MaaYYs-win32 是 [MaaYYs](https://github.com/TanyaShue/MaaYYs) 的一个分支�
 
 桌面端后台点击用的是 `SendMessage`。若游戏不响应，把 `interface.json` 里 Win32 控制器的 `mouse` / `keyboard` 改成 `PostMessage` 或 `SendMessageWithWindowPos` 等值（见 MaaFramework「控制方式」文档）再试。
 
-### 为什么任务卡在某个界面？
+</details>
+
+<details>
+<summary>为什么任务卡在某个界面？</summary>
 
 常见原因：没有从任务预期界面启动（普通任务通常需在庭院开始）；游戏更新后按钮 / 图标变化；队伍预设名称 OCR 识别失败。请尽量带上截图、任务名与日志反馈。
 
 ## 开发说明
+<details>
+<summary>首次启动为什么比较慢？</summary>
 
+~~少女为什么要祈祷这么久~~
+全量包已经包含 MaaFramework、MXU、资源和 agent，但首次连接设备、初始化运行目录或加载资源时仍可能需要等待
+<span style="color:red"><b>请不要在初始化过程中频繁暂停或关闭程序<b></span>
+
+</details>
+
+## 开发说明
+
+<details>
+<summary>点我展开~</summary>
+
+### 本地运行完整流程
+
+这个仓库本身主要保存 MaaYYs 的资源、任务配置和 Go agent 源码。`mxu.exe`、`maafw/`、已编译的 `agent.exe` 由 Release 全量包或 CI 产物提供，通常不会作为源码提交。想在本地跑完整流程，推荐先准备一个可运行的全量包目录，再把源码仓库放进去开发。
+
+推荐目录形态：
+
+```text
+MaaYYs/
+├── mxu.exe                 # Windows 图形界面入口，来自 Release 全量包
+├── maafw/                  # MaaFramework 运行库，来自 Release 全量包
+├── agent/
+│   ├── agent.exe           # 本地编译出的 agent
+│   └── *.go                # agent 源码
+├── assets/
+├── resource_pack/
+├── tasks/
+├── interface.json
+└── README.md
+```
+
+如果你是从零开始：
+
+1. 下载最新的 `MaaYYs-win-x86_64-*-MXU.zip` 并解压。
+2. 用 git clone 的仓库内容覆盖或替换解压目录中的同名源码目录与文件。
+3. 确认仓库根目录下存在 `mxu.exe` 和 `maafw/`。
+4. 编译 agent。
+5. 启动 `mxu.exe`，添加模拟器设备，选择资源和任务进行验证。
+
+仓库主要结构：
+
+```text
+.
+├── agent/                 # Go agent，自定义 action / recognition
+├── assets/                # 图标、答案表等通用资源
+├── doc/                   # 使用文档与截图
+├── resource_pack/         # MaaFramework pipeline、image、model 等资源包
+├── tasks/                 # MXU / interface 导入的任务配置
+├── interface.json         # Maa 项目入口、资源、agent、任务导入配置
+└── .github/workflows/     # 构建、发布、Mirror 酱同步工作流
+```
+
+>>>>>>> upstream/main
 ### 编译 agent
 
 ```powershell
@@ -120,6 +197,8 @@ MaaYYs-win32/
 - 推送形如 `v1.2.3`、`v1.2.3-beta.1` 的 tag：触发正式发布。
 
 CI 会编译 Go agent、下载固定版本 MaaFramework 与 MXU，并打包出 Windows x64 / ARM64 的 `MaaYYs-win32-win-*-MXU.zip` 发布到 Releases。
+
+</details>
 
 ## 贡献
 
