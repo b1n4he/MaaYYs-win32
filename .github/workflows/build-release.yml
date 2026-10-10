@@ -423,8 +423,7 @@ jobs:
 
   android:
     name: Build Android APK
-    needs: [meta, update-version]
-    if: ${{ always() && !cancelled() && (needs.update-version.result == 'success' || needs.update-version.result == 'skipped') }}
+    needs: [meta]
     runs-on: ubuntu-latest
     outputs:
       variant: ${{ steps.signing.outputs.variant }}
@@ -443,7 +442,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ needs.update-version.outputs.commit_sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Checkout MaaFwApp
