@@ -101,14 +101,13 @@ MaaYYs-win32 是 [MaaYYs](https://github.com/TanyaShue/MaaYYs) 的一个分支�
 
 桌面端后台点击用的是 `SendMessage`。若游戏不响应，把 `interface.json` 里 Win32 控制器的 `mouse` / `keyboard` 改成 `PostMessage` 或 `SendMessageWithWindowPos` 等值（见 MaaFramework「控制方式」文档）再试。
 
-</details>
-
 <details>
 <summary>为什么任务卡在某个界面？</summary>
 
 常见原因：没有从任务预期界面启动（普通任务通常需在庭院开始）；游戏更新后按钮 / 图标变化；队伍预设名称 OCR 识别失败。请尽量带上截图、任务名与日志反馈。
 
-## 开发说明
+</details>
+
 <details>
 <summary>首次启动为什么比较慢？</summary>
 
@@ -123,7 +122,7 @@ MaaYYs-win32 是 [MaaYYs](https://github.com/TanyaShue/MaaYYs) 的一个分支�
 <details>
 <summary>点我展开~</summary>
 
-### 本地运行完整流程
+### 从零部署（全量包 + 源码覆盖）
 
 这个仓库本身主要保存 MaaYYs 的资源、任务配置和 Go agent 源码。`mxu.exe`、`maafw/`、已编译的 `agent.exe` 由 Release 全量包或 CI 产物提供，通常不会作为源码提交。想在本地跑完整流程，推荐先准备一个可运行的全量包目录，再把源码仓库放进去开发。
 
