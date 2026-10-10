@@ -136,14 +136,14 @@
   },
   "确认再次挑战": {
     "action": "Click",
-    "expected": "确定",
+    "expected": "确定|确认",
     "post_delay": 2000,
     "recognition": "OCR",
     "roi": [633, 366, 252, 155]
   },
   "确认再次挑战_copy1": {
     "action": "Click",
-    "expected": "确定",
+    "expected": "确定|确认",
     "post_delay": 500,
     "recognition": "OCR",
     "roi": [655, 388, 192, 87]
@@ -443,7 +443,7 @@
   },
   "结界突破_确保位于式神录界面": {
     "expected": "式神录",
-    "next": ["[JumpBack]通用-拒绝下载", "装备突破预设"],
+    "next": ["[JumpBack]通用-拒绝下载-识别到下载二字", "装备突破预设"],
     "recognition": "OCR",
     "roi": [7, 0, 218, 65]
   },
@@ -484,7 +484,7 @@
   "自动结界-装备御魂": {
     "max_hit": 1,
     "next": [
-      "[JumpBack]通用-拒绝下载",
+      "[JumpBack]通用-拒绝下载-识别到下载二字",
       "结界突破_确保位于式神录界面",
       "[JumpBack]自动结界2",
       "[JumpBack]结界突破_点击式神录"
@@ -547,7 +547,7 @@
     "roi": [412, 268, 451, 204]
   },
   "自动结界9": {
-    "expected": "确定",
+    "expected": "确定|确认",
     "inverse": true,
     "post_delay": 1000,
     "recognition": "OCR",
@@ -556,7 +556,7 @@
   },
   "自动结界9_copy1": {
     "action": "Click",
-    "expected": "确定",
+    "expected": "确定|确认",
     "post_delay": 1000,
     "recognition": "OCR",
     "roi": [669, 386, 171, 76],
@@ -605,7 +605,7 @@
   },
   "退出战斗_确认": {
     "action": "Click",
-    "expected": "确认",
+    "expected": "确定|确认",
     "post_delay": 2000,
     "recognition": "OCR",
     "roi": [643, 359, 194, 113]
