@@ -148,9 +148,9 @@
         "next": [
             "活动爬塔-古迹演武-识别是否位于活动界面",
             "[JumpBack]活动爬塔-古迹演武-判断是否存在版本活动",
+            "[JumpBack]活动爬塔-古迹演武-仅第一次直接进活动总览",
             "[JumpBack]活动爬塔-古迹演武-多扫几次",
-            "[JumpBack]导航-活动总览",
-            "[JumpBack]活动爬塔-古迹演武-仅第一次直接进活动总览"
+            "[JumpBack]导航-活动总览"
         ],
         "recognition": "DirectHit"
     },
@@ -167,6 +167,7 @@
         "next": [
             "活动爬塔-古迹演武-识别是否进入活动界面",
             "[JumpBack]活动爬塔-古迹演武-点击进入爬塔活动",
+            "[JumpBack]活动爬塔-古迹演武-第一次直接进",
             "[JumpBack]活动爬塔-古迹演武-进入活动多扫几次",
             "[JumpBack]活动爬塔-古迹演武-导航-古迹演武"
         ],
@@ -227,7 +228,7 @@
     },
     "活动爬塔-古迹演武-点击挑战": {
         "action": "Click",
-        "expected": "挑战",
+        "expected": "挑战|桃战",
         "next": [
             "活动爬塔-古迹演武-识别活动界面",
             "[JumpBack]活动爬塔-古迹演武-点击屏幕继续",
@@ -331,7 +332,7 @@
             "max": 10,
             "min": 1
         },
-        "expected": "挑战",
+        "expected": "挑战|桃战",
         "focus": {
             "Node.Action.Starting": "[debug]开始随机等待",
             "Node.Action.Succeeded": "[debug]随机等待结束"
@@ -567,5 +568,11 @@
             "导航-式神录"
         ],
         "recognition": "Custom"
+    },
+    "活动爬塔-古迹演武-第一次直接进": {
+        "next": [
+            "活动爬塔-古迹演武-导航-古迹演武"
+        ],
+        "recognition": "DirectHit"
     }
 }
