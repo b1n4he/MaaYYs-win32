@@ -2,7 +2,7 @@
     "契灵结契": {
         "recognition": "DirectHit",
         "next": [
-            "契灵结契-主循环"
+            "契灵结契-召唤-点击召唤"
         ],
         "on_error": [
             "导航-庭院"
@@ -113,147 +113,7 @@
             58,
             58
         ],
-        "post_delay": 400,
-        "next": [
-            "契灵结契-召唤-加号1"
-        ]
-    },
-    "契灵结契-召唤-加号1": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号2"
-        ]
-    },
-    "契灵结契-召唤-加号2": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号3"
-        ]
-    },
-    "契灵结契-召唤-加号3": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号4"
-        ]
-    },
-    "契灵结契-召唤-加号4": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号5"
-        ]
-    },
-    "契灵结契-召唤-加号5": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号6"
-        ]
-    },
-    "契灵结契-召唤-加号6": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号7"
-        ]
-    },
-    "契灵结契-召唤-加号7": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号8"
-        ]
-    },
-    "契灵结契-召唤-加号8": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号9"
-        ]
-    },
-    "契灵结契-召唤-加号9": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
-        "next": [
-            "契灵结契-召唤-加号10"
-        ]
-    },
-    "契灵结契-召唤-加号10": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            598,
-            505,
-            42,
-            50
-        ],
-        "post_delay": 250,
+        "post_delay": 800,
         "next": [
             "契灵结契-召唤-确认"
         ]
