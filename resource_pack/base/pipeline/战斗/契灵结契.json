@@ -1,0 +1,101 @@
+{
+    "契灵结契": {
+        "recognition": "DirectHit",
+        "next": [
+            "契灵结契-主界面",
+            "[JumpBack]导航-契灵之境",
+            "[JumpBack]契灵结契-打开结契界面",
+            "契灵结契-主界面"
+        ],
+        "on_error": [
+            "导航-庭院"
+        ]
+    },
+    "契灵结契-打开结契界面": {
+        "recognition": "OCR",
+        "expected": "结契",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "action": "Click",
+        "post_delay": 3000,
+        "pre_wait_freezes": 500
+    },
+    "契灵结契-主界面": {
+        "recognition": "OCR",
+        "expected": "契灵结契",
+        "roi": [
+            150,
+            44,
+            145,
+            44
+        ],
+        "next": [
+            "契灵结契-主循环"
+        ]
+    },
+    "契灵结契-主循环": {
+        "recognition": "DirectHit",
+        "next": [
+            "[JumpBack]契灵-战斗-结束战斗",
+            "[JumpBack]契灵-稍后集结挑战首领",
+            "[JumpBack]契灵-关闭弹窗",
+            "契灵结契-计数次数",
+            "契灵结契-点击挑战",
+            "契灵结契-次数用尽"
+        ],
+        "timeout": 900000
+    },
+    "契灵结契-点击挑战": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            1100,
+            575,
+            140,
+            65
+        ],
+        "action": "Click",
+        "post_delay": 2500,
+        "pre_wait_freezes": 300,
+        "next": [
+            "[JumpBack]契灵-战斗-结束战斗",
+            "[JumpBack]契灵-关闭弹窗",
+            "契灵结契-战斗后回到主界面"
+        ],
+        "timeout": 300000
+    },
+    "契灵结契-战斗后回到主界面": {
+        "recognition": "OCR",
+        "expected": "契灵结契",
+        "roi": [
+            150,
+            44,
+            145,
+            44
+        ],
+        "next": [
+            "契灵结契-主循环"
+        ]
+    },
+    "契灵结契-计数次数": {
+        "recognition": "Custom",
+        "custom_recognition": "TaskCounterRecognition",
+        "custom_recognition_param": {
+            "target_count": 6
+        },
+        "inverse": true,
+        "next": [
+            "导航-庭院"
+        ]
+    },
+    "契灵结契-次数用尽": {
+        "recognition": "DirectHit",
+        "next": [
+            "导航-庭院"
+        ]
+    }
+}

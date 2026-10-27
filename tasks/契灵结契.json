@@ -1,0 +1,38 @@
+{
+    "task": [
+        {
+            "name": "契灵结契",
+            "label": "契灵结契",
+            "entry": "契灵结契",
+            "group": [
+                "standalone"
+            ],
+            "option": [
+                "契灵结契次数"
+            ]
+        }
+    ],
+    "option": {
+        "契灵结契次数": {
+            "type": "input",
+            "label": "结契挑战次数",
+            "description": "自动点击挑战的次数（次数用尽或进度满会自动停止）",
+            "inputs": [
+                {
+                    "name": "挑战次数",
+                    "label": "挑战次数",
+                    "default": "6",
+                    "pipeline_type": "int"
+                }
+            ],
+            "pipeline_override": {
+                "契灵结契-计数次数": {
+                    "custom_recognition": "TaskCounterRecognition",
+                    "custom_recognition_param": {
+                        "target_count": "{挑战次数}"
+                    }
+                }
+            }
+        }
+    }
+}
