@@ -140,10 +140,10 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            895,
-            60,
+            888,
+            81,
             45,
-            45
+            43
         ],
         "post_delay": 1200,
         "next": [
