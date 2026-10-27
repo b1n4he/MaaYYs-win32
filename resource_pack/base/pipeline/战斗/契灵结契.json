@@ -2,27 +2,11 @@
     "契灵结契": {
         "recognition": "DirectHit",
         "next": [
-            "契灵结契-主界面",
-            "[JumpBack]导航-契灵之境",
-            "[JumpBack]契灵结契-打开结契界面",
             "契灵结契-主界面"
         ],
         "on_error": [
             "导航-庭院"
         ]
-    },
-    "契灵结契-打开结契界面": {
-        "recognition": "OCR",
-        "expected": "结契",
-        "roi": [
-            0,
-            0,
-            1280,
-            720
-        ],
-        "action": "Click",
-        "post_delay": 3000,
-        "pre_wait_freezes": 500
     },
     "契灵结契-主界面": {
         "recognition": "OCR",
