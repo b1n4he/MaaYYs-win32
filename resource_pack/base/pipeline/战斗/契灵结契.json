@@ -62,6 +62,7 @@
         "post_delay": 2500,
         "pre_wait_freezes": 300,
         "next": [
+            "[JumpBack]契灵结契-放弃结契",
             "[JumpBack]契灵-战斗-结束战斗",
             "[JumpBack]契灵-关闭弹窗",
             "契灵结契-战斗后回到主界面"
@@ -97,5 +98,18 @@
         "next": [
             "导航-庭院"
         ]
+    },
+    "契灵结契-放弃结契": {
+        "recognition": "OCR",
+        "expected": "放弃结契",
+        "roi": [
+            310,
+            530,
+            340,
+            130
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "pre_wait_freezes": 300
     }
 }
