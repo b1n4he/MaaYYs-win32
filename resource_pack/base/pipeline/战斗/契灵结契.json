@@ -91,7 +91,7 @@
     },
     "契灵结契-召唤-点击召唤": {
         "recognition": "OCR",
-        "expected": "召唤",
+        "expected": "召唤|唤",
         "roi": [
             325,
             466,
