@@ -93,64 +93,58 @@
         "recognition": "OCR",
         "expected": "召唤",
         "roi": [
-            285,
-            435,
-            130,
+            325,
+            466,
+            135,
             75
         ],
         "action": "Click",
         "post_delay": 1500,
         "next": [
             "契灵结契-召唤-点击最大"
+        ],
+        "on_error": [
+            "契灵结契-主循环"
         ]
     },
     "契灵结契-召唤-点击最大": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            660,
-            500,
-            58,
-            58
+            741,
+            538,
+            62,
+            59
         ],
-        "post_delay": 800,
+        "post_delay": 1000,
         "next": [
             "契灵结契-召唤-确认"
         ]
     },
     "契灵结契-召唤-确认": {
-        "recognition": "OCR",
-        "expected": "鸣契",
-        "roi": [
-            430,
-            560,
-            300,
-            80
-        ],
+        "recognition": "DirectHit",
         "action": "Click",
+        "target": [
+            508,
+            617,
+            247,
+            43
+        ],
         "post_delay": 2000,
         "next": [
-            "契灵结契-召唤-关闭面板",
-            "契灵结契-主循环"
+            "契灵结契-召唤-关闭面板"
         ]
     },
     "契灵结契-召唤-关闭面板": {
-        "recognition": "OCR",
-        "expected": "请选择",
-        "roi": [
-            380,
-            75,
-            400,
-            45
-        ],
+        "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            790,
-            75,
+            888,
+            81,
             45,
-            45
+            43
         ],
-        "post_delay": 1500,
+        "post_delay": 1200,
         "next": [
             "契灵结契-主循环"
         ]
