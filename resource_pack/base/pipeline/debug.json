@@ -12,7 +12,10 @@
     ],
     "rate_limit": 60000,
     "recognition": "DirectHit",
-    "timeout": -1
+    "timeout": 86400000,
+    "on_error": [
+      "开始识别悬赏封印委托-保活"
+    ]
   },
   "悬赏封印_协助战斗1": {
     "expected": "^协?悬赏封印$",
@@ -85,5 +88,12 @@
     "max_hit": 2,
     "next": "StopTask",
     "recognition": "DirectHit"
+  },
+  "开始识别悬赏封印委托-保活": {
+    "recognition": "DirectHit",
+    "post_delay": 30000,
+    "next": [
+      "开始识别悬赏封印委托"
+    ]
   }
 }
