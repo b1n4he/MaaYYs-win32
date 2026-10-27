@@ -104,8 +104,9 @@
             "契灵结契-召唤-点击最大"
         ],
         "on_error": [
-            "契灵结契-主循环"
-        ]
+            "契灵结契-召唤-点击最大"
+        ],
+        "timeout": 3000
     },
     "契灵结契-召唤-点击最大": {
         "recognition": "DirectHit",
@@ -139,10 +140,10 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            888,
-            81,
+            895,
+            60,
             45,
-            43
+            45
         ],
         "post_delay": 1200,
         "next": [
