@@ -53,12 +53,12 @@
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            150,
-            145,
-            305,
-            110
+            383,
+            156,
+            75,
+            75
         ],
         "target": [
             212,
@@ -66,22 +66,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第七个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            150,
-            415,
-            305,
-            110
+            383,
+            426,
+            75,
+            75
         ],
         "target": [
             212,
@@ -89,22 +96,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第三个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            843,
-            145,
-            305,
-            110
+            1076,
+            156,
+            75,
+            75
         ],
         "target": [
             905,
@@ -112,11 +126,18 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第九个结界": {
         "action": "Click",
@@ -129,12 +150,12 @@
             "跳过"
         ],
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            843,
-            415,
-            305,
-            110
+            1076,
+            426,
+            75,
+            75
         ],
         "target": [
             905,
@@ -142,22 +163,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第二个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            497,
-            145,
-            303,
-            110
+            730,
+            156,
+            75,
+            75
         ],
         "target": [
             558,
@@ -165,22 +193,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第五个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            497,
-            280,
-            303,
-            110
+            730,
+            291,
+            75,
+            75
         ],
         "target": [
             558,
@@ -188,22 +223,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第八个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            497,
-            415,
-            303,
-            110
+            730,
+            426,
+            75,
+            75
         ],
         "target": [
             558,
@@ -211,22 +253,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第六个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            843,
-            280,
-            305,
-            110
+            1076,
+            291,
+            75,
+            75
         ],
         "target": [
             905,
@@ -234,22 +283,29 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "挑战第四个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            150,
-            280,
-            305,
-            110
+            383,
+            291,
+            75,
+            75
         ],
         "target": [
             212,
@@ -257,11 +313,18 @@
             180,
             70
         ],
-        "template": [
-            "自动结界/突破_击破_新版.png",
-            "自动结界/突破_击破_新版2.png"
+        "timeout": 5000,
+        "lower": [
+            95,
+            0,
+            0
         ],
-        "timeout": 5000
+        "upper": [
+            255,
+            100,
+            100
+        ],
+        "count": 300
     },
     "探索_突破_御魂_返回": {
         "action": "Click",
