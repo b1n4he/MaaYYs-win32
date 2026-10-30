@@ -449,7 +449,7 @@
         "action": "Click",
         "expected": "自动",
         "max_hit": 1,
-        "post_delay": 2000,
+        "post_delay": 800,
         "recognition": "OCR",
         "roi": [
             0,
@@ -633,10 +633,10 @@
         },
         "max_hit": 4,
         "next": [
-            "突破-确保进入失败页面",
-            "[JumpBack]突破-改为手动",
-            "[JumpBack]退出战斗_确认",
             "[JumpBack]突破_重新挑战_特征匹配",
+            "[JumpBack]退出战斗_确认",
+            "[JumpBack]突破-改为手动",
+            "突破-确保进入失败页面",
             "[JumpBack]突破_重新挑战-模板匹配",
             "突破-直接结束突破"
         ],
@@ -719,7 +719,7 @@
     },
     "突破_重新挑战-模板匹配": {
         "action": "Click",
-        "post_delay": 3000,
+        "post_delay": 800,
         "pre_delay": 1,
         "recognition": "TemplateMatch",
         "roi": [
@@ -744,7 +744,7 @@
     },
     "突破_重新挑战_特征匹配": {
         "action": "Click",
-        "post_delay": 3000,
+        "post_delay": 800,
         "pre_delay": 1,
         "recognition": "FeatureMatch",
         "roi": [
@@ -1183,7 +1183,7 @@
     "退出战斗_确认": {
         "action": "Click",
         "expected": "确定|确认",
-        "post_delay": 2000,
+        "post_delay": 800,
         "recognition": "OCR",
         "roi": [
             643,
