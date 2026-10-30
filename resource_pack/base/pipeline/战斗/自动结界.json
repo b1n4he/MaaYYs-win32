@@ -53,60 +53,69 @@
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            480,
-            130,
-            350,
-            160
+            150,
+            145,
+            305,
+            110
         ],
         "target": [
-            555,
-            160,
-            200,
-            90
+            212,
+            165,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第七个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            830,
-            425,
-            350,
-            140
+            150,
+            415,
+            305,
+            110
         ],
         "target": [
-            905,
-            450,
-            200,
-            90
+            212,
+            435,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第三个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            480,
-            425,
-            350,
-            140
+            843,
+            145,
+            305,
+            110
         ],
         "target": [
-            555,
-            450,
-            200,
-            90
+            905,
+            165,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第九个结界": {
@@ -120,120 +129,138 @@
             "跳过"
         ],
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            830,
-            545,
-            350,
-            150
+            843,
+            415,
+            305,
+            110
         ],
         "target": [
             905,
-            575,
-            200,
-            90
+            435,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第二个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            480,
-            285,
-            350,
-            145
+            497,
+            145,
+            303,
+            110
         ],
         "target": [
-            555,
-            310,
-            200,
-            90
+            558,
+            165,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第五个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            830,
-            130,
-            350,
-            160
+            497,
+            280,
+            303,
+            110
         ],
         "target": [
-            905,
-            160,
-            200,
-            90
+            558,
+            300,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第八个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            830,
-            545,
-            350,
-            150
+            497,
+            415,
+            303,
+            110
         ],
         "target": [
-            905,
-            575,
-            200,
-            90
+            558,
+            435,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第六个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            830,
-            285,
-            350,
-            145
+            843,
+            280,
+            305,
+            110
         ],
         "target": [
             905,
-            310,
-            200,
-            90
+            300,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "挑战第四个结界": {
         "action": "Click",
         "inverse": true,
         "post_delay": 1000,
-        "recognition": "FeatureMatch",
+        "recognition": "TemplateMatch",
         "roi": [
-            480,
-            545,
-            350,
-            150
+            150,
+            280,
+            305,
+            110
         ],
         "target": [
-            555,
-            575,
-            200,
-            90
+            212,
+            300,
+            180,
+            70
         ],
-        "template": "自动结界/突破_击破.png",
+        "template": [
+            "自动结界/突破_击破_新版.png",
+            "自动结界/突破_击破_新版2.png"
+        ],
         "timeout": 5000
     },
     "探索_突破_御魂_返回": {
