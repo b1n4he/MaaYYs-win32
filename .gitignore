@@ -21,7 +21,7 @@
 /resource_pack/base/pipeline/特殊/mio.json
 /临时素材/
 /maactl.exe
-
+/assets/recognition_state.json
 # Android 打包中间产物（CI 现场生成，不入库）
 /build-android/
 /agent/vendor/
