@@ -488,7 +488,7 @@
         "expected": "首页|精灵百科",
         "next": ["通用_切换御魂_退出攻略界面", "[JumpBack]通用_切换御魂_退出攻略界面-特征匹配"],
         "recognition": "OCR",
-        "roi": [212, 0, 606, 70]
+        "roi": [240, 80, 700, 55]
     },
     "通用_切换御魂_识别是否位于预设界面": {
         "expected": "管理分组",
@@ -517,17 +517,17 @@
     },
     "通用_切换御魂_退出攻略界面": {
         "action": "Click",
-        "post_delay": 3000,
-        "recognition": "TemplateMatch",
-        "roi": [1102, 344, 178, 376],
-        "template": ["通用/通用2.png", "通用/通用/通用_切换御魂_退出攻略界面_1.png"]
+        "expected": "关闭",
+        "post_delay": 2000,
+        "recognition": "OCR",
+        "roi": [1100, 8, 160, 66]
     },
     "通用_切换御魂_退出攻略界面-特征匹配": {
         "action": "Click",
-        "post_delay": 3000,
-        "recognition": "TemplateMatch",
-        "roi": [1102, 344, 178, 376],
-        "template": ["通用/通用2.png", "通用/通用/通用_切换御魂_退出攻略界面_1.png"]
+        "expected": "关闭",
+        "post_delay": 2000,
+        "recognition": "OCR",
+        "roi": [1100, 8, 160, 66]
     },
     "通用_取消设置挑战次数": {
         "action": "Click",
